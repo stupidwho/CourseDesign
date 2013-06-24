@@ -8,12 +8,11 @@ class Student
 {
 public:
 	Student();
-	~Student();
 
 protected:
 	string	name;
-	string	sex;
 	string	room_number;
+	bool sex;
 	int	fascination;
 	int	weight;
 	int	cost;
@@ -24,9 +23,5 @@ private:
 };
 
 Student::Student()
-{
-}
-
-Student::~Student()
 {
 }

@@ -41,6 +41,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>G:\Works\boost_1_53_0;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -76,8 +77,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Boy.h" />
     <ClInclude Include="Dorm.h" />
+    <ClInclude Include="Girl.h" />
+    <ClInclude Include="Init_value.h" />
+    <ClInclude Include="split.h" />
     <ClInclude Include="Student.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Init_value.cpp" />
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

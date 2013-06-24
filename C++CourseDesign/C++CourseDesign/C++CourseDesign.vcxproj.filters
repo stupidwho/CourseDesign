@@ -21,5 +21,25 @@
     <ClInclude Include="Dorm.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Girl.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Boy.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Init_value.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="split.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Init_value.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
