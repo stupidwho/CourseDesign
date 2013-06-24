@@ -1,8 +1,7 @@
 #include <iostream>
 
-class Init_value
+namespace Init_value
 {
-public:
 	int FLOOR;
 	int ROOM;
 	int CAPACITY;
@@ -22,6 +21,5 @@ public:
 	int FEMALE_MONEY;
 	int FEMALE_CHARM;
 	int FEMALE_LOOKS;
-
-	bool init(std::istream &);
 };
+
