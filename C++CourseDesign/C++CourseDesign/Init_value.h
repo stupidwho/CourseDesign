@@ -1,9 +1,5 @@
-#include <vector>
-#include <map>
-#include <string>
-
-#include "Student.h"
-#include "Dorm.h"
+#ifndef INITIAL_VALUE
+#define INITIAL_VALUE
 
 namespace Init_value
 {
@@ -28,5 +24,4 @@ namespace Init_value
 	int FEMALE_LOOKS;
 };
 
-extern std::map<std::string,Student*> students;
-extern Dorm dormitory;
+#endif

@@ -1,9 +1,14 @@
+#ifndef INITIAL_FUNCTIONS
+#define INITIAL_FUNCTIONS
+
 #include <string>
 #include <vector>
 #include <cstdlib>
+#include <cstdio>
 
 #include "Init_value.h"
 #include "split.h"
+#include "Dorm.h"
 #include "Boy.h"
 #include "Girl.h"
 
@@ -60,21 +65,35 @@ void initv(std::istream& is)
 				FEMALE_LOOKS = atoi(strs[1].c_str());
 		}
 	}
-	std::cout << FLOOR << std::endl;
-	std::cout << ROOM << std::endl;
-	std::cout << FEMALE_CHARM << std::endl;
-	std::cout << FEMALE_LOOKS << std::endl;
 }
 
-void inits(std::istream& is)
+void inits(std::istream& is, Dorm &d)
 {
 	std::string str;
 	std::vector<std::string> strs;
+	std::getline(is, str);
+	strs = split(str);
+	std::string t = strs[1];
+	int fl;
+	sscanf(strs[2].c_str(),"%d",&fl);
+	int ro;
+	sscanf(strs[4].c_str(),"%d",&ro);
+	fl--;
+	ro--;
+	bool sex = (strs[1] != t);
+	d.enrol(strs[0], sex, fl, ro);
 	while (std::getline(is,str))
 	{
+		if (str.size() == 0)
+			continue;
 		strs = split(str);
-		Student *p = new Boy();
-		
-		students[strs[0]] = p;
+		sscanf(strs[2].c_str(),"%d",&fl);
+		sscanf(strs[4].c_str(),"%d",&ro);
+		fl--;
+		ro--;
+		bool sex = (strs[1] != t);
+		d.enrol(strs[0], sex, fl, ro);
 	}
 }
+
+#endif

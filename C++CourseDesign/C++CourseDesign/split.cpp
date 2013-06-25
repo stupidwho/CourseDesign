@@ -14,13 +14,13 @@ using std::isspace;
 // `true' if the argument is whitespace, `false' otherwise
 bool space(char c)
 {
-	return isspace(c);
+	return c == ' ';
 }
 
 // `false' if the argument is whitespace, `true' otherwise
 bool not_space(char c)
 {
-	return !isspace(c);
+	return c != ' ';
 }
 
 vector<string> split(const string& str)

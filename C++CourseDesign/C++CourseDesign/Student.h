@@ -1,5 +1,10 @@
+#ifndef STUDENT_CLASS
+#define STUDENT_CLASS
+
 #include <string>
 #include <vector>
+
+#include "Init_value.h"
 
 using std::string;
 using std::vector;
@@ -7,23 +12,19 @@ using std::vector;
 class Student
 {
 public:
-	Student();
 	void eat();
 	void study();
-	virtual void tmp();
 protected:
 	string	name;
-	string	room_number;
 	bool sex;
+	int	floor_number;
+	int	room_number;
 	int	fascination;
 	int	weight;
 	int	cost;
 	vector<string> lover;
 	vector<string> past_lover;
 private:
-
 };
 
-Student::Student()
-{
-}
+#endif
