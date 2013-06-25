@@ -1,0 +1,40 @@
+ADD 5 FLOOR(s)     
+ADD 6 ROOM(s) TO 3 FLOOR    
+ADD 4 BED(s) TO 04 - 14     
+
+韩国谦 EAT 05 STUDY 10 EXERCISE 03   
+少红 EAT 03 STUDY 04 MAKEUP 02
+陈晓敏 MAKEUP 02
+少红 STUDY 08
+曾喜欢 EXERCISE 02 
+萨基 EAT 03 STUDY 03
+胡大萨 EAT 07  
+鹤轩 MOVE FROM 09 - 17 TO 02 - 13 
+刘大江 QUIT     
+华为 男 ENTER 02 - 13 
+李西装 EAT 03
+鹤轩 STUDY 03
+
+ADD 4 ROOM(s) TO 4 FLOOR    
+ADD 2 BED(s) TO 06 - 18     
+
+之桃 MAKEUP 01
+新柔 EAT 04
+鸿煊 STUDY 03 EAT 02
+烨霖 EXERCISE 08 
+傲珊 MAKEUP 01
+熠彤 EAT 04
+伟泽 STUDY 03 EAT 03
+尔岚 MAKEUP 03
+水桃 QUIT 
+
+
+鹤轩 COURT 陈晓敏
+鹤轩 陈晓敏 BREAK UP
+
+
+
+
+
+
+

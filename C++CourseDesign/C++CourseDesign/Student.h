@@ -8,7 +8,9 @@ class Student
 {
 public:
 	Student();
-
+	void eat();
+	void study();
+	virtual void tmp();
 protected:
 	string	name;
 	string	room_number;
