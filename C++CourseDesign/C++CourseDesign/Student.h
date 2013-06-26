@@ -11,6 +11,7 @@ using std::vector;
 
 class Student
 {
+	friend class Dorm;
 public:
 	void eat();
 	void study();
