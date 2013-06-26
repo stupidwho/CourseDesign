@@ -9,10 +9,7 @@
 #include "Init_value.h"
 #include "split.h"
 #include "Dorm.h"
-#include "Boy.h"
-#include "Girl.h"
-
-using namespace Init_value;
+#include "Student.h"
 
 void initv(std::istream& is)
 {
@@ -26,43 +23,43 @@ void initv(std::istream& is)
 		{
 			strs = split(str);
 			if (strs[0] == "FLOOR:")
-				FLOOR = atoi(strs[1].c_str());
+				Init_value::FLOOR = atoi(strs[1].c_str());
 			else if (strs[0] == "ROOM:")
-				ROOM = atoi(strs[1].c_str());
+				Init_value::ROOM = atoi(strs[1].c_str());
 			else if (strs[0] == "CAPACITY:")
-				CAPACITY = atoi(strs[1].c_str());
+				Init_value::CAPACITY = atoi(strs[1].c_str());
 			else if (strs[0] == "FOOD_WEIGHT:")
-				FOOD_WEIGHT = atoi(strs[1].c_str());
+				Init_value::FOOD_WEIGHT = atoi(strs[1].c_str());
 			else if (strs[0] == "FOOD_COST:")
-				FOOD_COST = atoi(strs[1].c_str());
+				Init_value::FOOD_COST = atoi(strs[1].c_str());
 			else if (strs[0] == "STUDY_WEIGHT:")
-				STUDY_WEIGHT = atoi(strs[1].c_str());
+				Init_value::STUDY_WEIGHT = atoi(strs[1].c_str());
 			else if (strs[0] == "STUDY_CHARM:")
-				STUDY_CHARM = atoi(strs[1].c_str());
+				Init_value::STUDY_CHARM = atoi(strs[1].c_str());
 			else if (strs[0] == "MAKEUP_LOOKS:")
-				MAKEUP_LOOKS = atoi(strs[1].c_str());
+				Init_value::MAKEUP_LOOKS = atoi(strs[1].c_str());
 			else if (strs[0] == "MAKEUP_COST:")
-				MAKEUP_COST = atoi(strs[1].c_str());
+				Init_value::MAKEUP_COST = atoi(strs[1].c_str());
 			else if (strs[0] == "EXERCISE_HEALTH:")
-				EXERCISE_HEALTH = atoi(strs[1].c_str());
+				Init_value::EXERCISE_HEALTH = atoi(strs[1].c_str());
 			else if (strs[0] == "EXERCISE_WEIGHT:")
-				EXERCISE_WEIGHT = atoi(strs[1].c_str());
+				Init_value::EXERCISE_WEIGHT = atoi(strs[1].c_str());
 			else if (strs[0] == "MALE_WEIGHT:")
-				MALE_WEIGHT = atoi(strs[1].c_str());
+				Init_value::MALE_WEIGHT = atoi(strs[1].c_str());
 			else if (strs[0] == "MALE_MONEY:")
-				MALE_MONEY = atoi(strs[1].c_str());
+				Init_value::MALE_MONEY = atoi(strs[1].c_str());
 			else if (strs[0] == "MALE_CHARM:")
-				MALE_CHARM = atoi(strs[1].c_str());
+				Init_value::MALE_CHARM = atoi(strs[1].c_str());
 			else if (strs[0] == "MALE_HEALTH:")
-				MALE_HEALTH = atoi(strs[1].c_str());
+				Init_value::MALE_HEALTH = atoi(strs[1].c_str());
 			else if (strs[0] == "FEMALE_WEIGHT:")
-				FEMALE_WEIGHT = atoi(strs[1].c_str());
+				Init_value::FEMALE_WEIGHT = atoi(strs[1].c_str());
 			else if (strs[0] == "FEMALE_MONEY:")
-				FEMALE_MONEY = atoi(strs[1].c_str());
+				Init_value::FEMALE_MONEY = atoi(strs[1].c_str());
 			else if (strs[0] == "FEMALE_CHARM:")
-				FEMALE_CHARM = atoi(strs[1].c_str());
+				Init_value::FEMALE_CHARM = atoi(strs[1].c_str());
 			else if (strs[0] == "FEMALE_LOOKS:")
-				FEMALE_LOOKS = atoi(strs[1].c_str());
+				Init_value::FEMALE_LOOKS = atoi(strs[1].c_str());
 		}
 	}
 }
@@ -71,17 +68,7 @@ void inits(std::istream& is, Dorm &d)
 {
 	std::string str;
 	std::vector<std::string> strs;
-	std::getline(is, str);
-	strs = split(str);
-	std::string t = strs[1];
-	int fl;
-	sscanf(strs[2].c_str(),"%d",&fl);
-	int ro;
-	sscanf(strs[4].c_str(),"%d",&ro);
-	fl--;
-	ro--;
-	bool sex = (strs[1] != t);
-	d.enrol(strs[0], sex, fl, ro);
+	int fl,ro;
 	while (std::getline(is,str))
 	{
 		if (str.size() == 0)
@@ -91,7 +78,7 @@ void inits(std::istream& is, Dorm &d)
 		sscanf(strs[4].c_str(),"%d",&ro);
 		fl--;
 		ro--;
-		bool sex = (strs[1] != t);
+		bool sex = (strcmp(strs[1].c_str(), "Ů") == 0);
 		d.enrol(strs[0], sex, fl, ro);
 	}
 }

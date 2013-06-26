@@ -5,11 +5,8 @@
 #include <string>
 #include <map>
 
-#include "Init_value.h"
 #include "split.h"
 #include "Student.h"
-#include "Girl.h"
-#include "Boy.h"
 
 typedef struct
 {
@@ -29,14 +26,14 @@ public:
 	bool exists(int, int);
 	bool move(std::string, int, int, int, int);
 	bool quit(std::string);
-	
+
 	bool add(int);
 	bool add(int, int);
 	bool add(int, int, int);
 
 	std::vector<FLOOR_NUM> floors;  //每座楼所含层用vector记录
 	std::map<std::string,Student*> students;
-	
+
 };
 
 Dorm::Dorm()
@@ -55,10 +52,11 @@ Dorm::Dorm()
 	}
 }
 
-bool Dorm::enrol(string n, bool s, int fl, int rm)
+bool Dorm::enrol(std::string n, bool s, int fl, int rm)
 {
-	if (!exists(fl,rm) || floors[fl][rm].member.size()==floors[fl][rm].number 
-		||floors[fl][rm].sex!=s)
+	if (!exists(fl,rm) || floors[fl][rm].member.size()>=floors[fl][rm].number)
+		return false;
+	else if (floors[fl][rm].member.size() != 0 && floors[fl][rm].sex != s)
 		return false;
 	Student *p;
 	if (s)
@@ -87,12 +85,16 @@ bool Dorm::exists(int fl, int rm)
 bool Dorm::move(std::string n, int flfrom, int rmfrom, int flto, int rmto)
 {
 	if (!exists(flfrom,rmfrom) || !exists(flto,rmto) 
-		|| floors[flfrom][rmfrom].sex != floors[flto][rmto].sex
 		|| floors[flto][rmto].member.size()>= floors[flto][rmto].number)
 		return false;
+	else if (floors[flto][rmto].member.size() !=0 
+		&& floors[flfrom][rmfrom].sex != floors[flto][rmto].sex)
+		return false;
+
+	floors[flto][rmto].sex = floors[flfrom][rmfrom].sex;
 	std::vector<std::string>& tmp = floors[flfrom][rmfrom].member;
 
-	std::vector<string>::iterator  iter;
+	std::vector<std::string>::iterator  iter;
 	for(iter = tmp.begin();
 		iter != tmp.end(); iter++)
 	{
@@ -119,7 +121,7 @@ bool Dorm::quit(std::string n)
 	int fl = iter->second->floor_number;
 	int rm = iter->second->room_number;
 	std::vector<std::string>& tmp = floors[fl][rm].member;
-	std::vector<string>::iterator  it;
+	std::vector<std::string>::iterator  it;
 	for(it = tmp.begin(); it != tmp.end(); it++)
 	{
 		if (*it == n)
@@ -135,9 +137,41 @@ bool Dorm::quit(std::string n)
 
 bool Dorm::add(int fls)
 {
+	for(int i=0; i<fls; i++)
+	{
+		FLOOR_NUM f;
+		for(int j=0; j<Init_value::ROOM; j++)
+		{
+			ROOM_NUM tmp;
+			tmp.sex = false;
+			tmp.number = Init_value::CAPACITY;
+			f.push_back(tmp);
+		}
+		floors.push_back(f);
+	}
+	return true;
 }
 
-bool Dorm::add(int, int);
-	bool add(int, int, int);
+bool Dorm::add(int fl, int rms)
+{
+	if (floors.size() < fl+1)
+		return false;
+	for(int i=0; i<rms; i++)
+	{
+		ROOM_NUM tmp;
+		tmp.sex = false;
+		tmp.number = Init_value::CAPACITY;
+		floors[fl].push_back(tmp);
+	}
+	return true;
+}
+
+bool Dorm::add(int fl, int rm, int beds)
+{
+	if (!exists(fl,rm))
+		return false;
+	floors[fl][rm].number += beds;
+	return true;
+}
 
 #endif
