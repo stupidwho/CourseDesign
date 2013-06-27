@@ -36,15 +36,18 @@
     <ClInclude Include="read.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Boy.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Girl.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="split.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Student.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

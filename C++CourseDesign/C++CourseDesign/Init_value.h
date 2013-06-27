@@ -1,6 +1,6 @@
 #ifndef INITIAL_VALUE
 #define INITIAL_VALUE
-
+#include <fstream>
 namespace Init_value
 {
 	int FLOOR;

@@ -5,8 +5,10 @@
 #include <string>
 #include <map>
 
+#include "Dorm.h"
 #include "split.h"
-#include "Student.h"
+#include "Girl.h"
+#include "Boy.h"
 
 typedef struct
 {
@@ -20,20 +22,19 @@ typedef std::vector<ROOM_NUM> FLOOR_NUM;  //每层所含房间用vector记录
 class Dorm
 {
 public:
+	std::vector<FLOOR_NUM> floors;  //每座楼所含层用vector记录
+	std::map<std::string,Student*> students;
+
 	Dorm();
-	bool enrol(std::string, bool, int, int);
 	FLOOR_NUM& operator[](int);
 	bool exists(int, int);
+	bool enrol(std::string, bool, int, int);
 	bool move(std::string, int, int, int, int);
 	bool quit(std::string);
 
 	bool add(int);
 	bool add(int, int);
 	bool add(int, int, int);
-
-	std::vector<FLOOR_NUM> floors;  //每座楼所含层用vector记录
-	std::map<std::string,Student*> students;
-
 };
 
 Dorm::Dorm()
@@ -52,6 +53,19 @@ Dorm::Dorm()
 	}
 }
 
+FLOOR_NUM& Dorm::operator[](int i)
+{
+	return floors[i];
+}
+
+bool Dorm::exists(int fl, int rm)
+{
+	if (floors.size() < fl+1 || floors[fl].size() < rm+1)
+		return false;
+	else
+		return true;
+}
+
 bool Dorm::enrol(std::string n, bool s, int fl, int rm)
 {
 	if (!exists(fl,rm) || floors[fl][rm].member.size()>=floors[fl][rm].number)
@@ -67,19 +81,6 @@ bool Dorm::enrol(std::string n, bool s, int fl, int rm)
 	floors[fl][rm].sex = s;
 	students[n] = p;
 	return true;
-}
-
-FLOOR_NUM& Dorm::operator[](int i)
-{
-	return floors[i];
-}
-
-bool Dorm::exists(int fl, int rm)
-{
-	if (floors.size() < fl+1 || floors[fl].size() < rm+1)
-		return false;
-	else
-		return true;
 }
 
 bool Dorm::move(std::string n, int flfrom, int rmfrom, int flto, int rmto)
@@ -134,6 +135,8 @@ bool Dorm::quit(std::string n)
 	students.erase(iter);
 	return true;
 }
+
+
 
 bool Dorm::add(int fls)
 {

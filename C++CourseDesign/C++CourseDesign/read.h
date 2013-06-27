@@ -5,8 +5,6 @@
 #include <vector>
 #include <string>
 
-#include "Student.h"
-#include "split.h"
 #include "Dorm.h"
 #include "love.h"
 
@@ -49,6 +47,7 @@ void read_command(std::istream& is, Dorm& d)
 				sscanf(strs[7].c_str(),"%d",&tf);
 				int tr;
 				sscanf(strs[9].c_str(),"%d",&tr);
+				ff--,fr--,tf--,tr--;
 				if (!d.move(n, ff, fr, tf, tr))
 					std::cout << "指令内容错误" << std::endl;
 			}
@@ -66,6 +65,7 @@ void read_command(std::istream& is, Dorm& d)
 				bool s = (strcmp(strs[1].c_str(),"女") == 0);
 				sscanf(strs[3].c_str(),"%d",&fl);
 				sscanf(strs[5].c_str(),"%d",&rm);
+				fl--,rm--;
 				if (!d.enrol(strs[0], s, fl, rm))
 					std::cout << "指令内容错误" << std::endl;
 			}
@@ -80,31 +80,39 @@ void read_command(std::istream& is, Dorm& d)
 			break;
 		case CMD_ADD_ROOMS: 
 			{
-				int fls,rms;
-				sscanf(strs[1].c_str(),"%d",&fls);
-				sscanf(strs[4].c_str(),"%d",&rms);
-				if (!d.add(fls, rms))
+				int fl,rms;
+				sscanf(strs[1].c_str(),"%d",&rms);
+				sscanf(strs[4].c_str(),"%d",&fl);
+				fl--;
+				if (!d.add(fl, rms))
 					std::cout << "指令内容错误" << std::endl;
 			}
 			break;
 		case CMD_ADD_BEDS: 
 			{
 				int fl,rm,beds;
-				sscanf(strs[1].c_str(),"%d",&fl);
-				sscanf(strs[4].c_str(),"%d",&rm);
-				sscanf(strs[6].c_str(),"%d",&beds);
+				sscanf(strs[1].c_str(),"%d",&beds);
+				sscanf(strs[4].c_str(),"%d",&fl);
+				sscanf(strs[6].c_str(),"%d",&rm);
+				fl--,rm--;
 				if (!d.add(fl, rm, beds))
 					std::cout << "指令内容错误" << std::endl;
 			}
 			break;
 		case CMD_COURT: 
 			{
-				court(d.students[strs[0]], d.students[strs[2]]);
+				if (court(d.students[strs[0]], d.students[strs[2]]))
+					std::cout << "追求成功" << std::endl;
+				else
+					std::cout << "追求失败" << std::endl;
 			}
 			break;
 		case CMD_BREAKUP: 
 			{
-				breakup(d.students[strs[0]], d.students[strs[1]]);
+				if (breakup(d.students[strs[0]], d.students[strs[1]]))
+					std::cout << "分手成功" << std::endl;
+				else
+					std::cout << "分手失败" << std::endl;
 			}
 			break;
 		case CMD_MULTI: 

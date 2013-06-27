@@ -4,6 +4,8 @@
 #include <string>
 #include <vector>
 
+#include "Init_value.h"
+
 class Student
 {
 
@@ -22,45 +24,5 @@ public:
 	std::vector<std::string> lover;
 	std::vector<std::string> past_lover;
 };
-
-class Boy:public Student
-{
-public:
-	Boy(const std::string&, const bool&, const int&, const int&);
-	void eat(int);
-	void study(int);
-	void ownact(int);
-
-protected:
-	int health;
-private:
-	int weight_add(int, int, int);
-	int cost_add(int);
-	int health_add(int);
-	int charm_add(int, int, int);
-};
-
-
-
-////////////////////////·Ö¸îÏß///////////////////////////////////////////////
-
-class Girl:public Student
-{
-public:
-	Girl(const std::string&, const bool&, const int&, const int&);
-	void eat(int);
-	void study(int);
-	void ownact(int);
-
-protected:
-	int looks;
-private:
-	int weight_add(int, int);
-	int cost_add(int, int);
-	int looks_add(int);
-	int charm_add(int, int, int);
-};
-
-
 
 #endif

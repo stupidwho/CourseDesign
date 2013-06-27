@@ -6,10 +6,10 @@
 #include <cstdlib>
 #include <cstdio>
 
-#include "Init_value.h"
 #include "split.h"
 #include "Dorm.h"
 #include "Student.h"
+#include "Init_value.h"
 
 void initv(std::istream& is)
 {

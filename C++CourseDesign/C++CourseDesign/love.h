@@ -9,6 +9,10 @@ int nrand(int);
 
 bool court(Student *a, Student *b)
 {
+	std::vector<std::string>::iterator i;
+	for(i=a->lover.begin(); i!=a->lover.end(); i++)
+		if (*i == b->name)
+			return true;
 	if (fall_love(a,b))
 	{
 		a->lover.push_back(b->name);
@@ -16,9 +20,7 @@ bool court(Student *a, Student *b)
 		return true;
 	}
 	else
-	{
 		return false;
-	}
 }
 
 bool fall_love(Student *a, Student *b)
@@ -29,6 +31,12 @@ bool fall_love(Student *a, Student *b)
 
 bool breakup(Student *a, Student *b)
 {
+	std::vector<std::string>::iterator i;
+	for(i=a->lover.begin(); i!=a->lover.end(); i++)
+		if (*i == b->name)
+			break;
+	if (i == a->lover.end())
+		return true;
 	if (fall_break(a, b))
 	{
 		std::vector<std::string>::iterator i;
@@ -38,18 +46,15 @@ bool breakup(Student *a, Student *b)
 				a->lover.erase(i);
 				break;
 			}
-		for(i = b->lover.begin(); i!=b->lover.end(); i++)
-			if (*i == a->name)
-			{
-				b->lover.erase(i);
-				break;
-			}
-		if (i != b->lover.end())
-		{
+			for(i = b->lover.begin(); i!=b->lover.end(); i++)
+				if (*i == a->name)
+				{
+					b->lover.erase(i);
+					break;
+				}
 			a->past_lover.push_back(b->name);
 			b->past_lover.push_back(a->name);
-		}
-		return true;
+			return true;
 	}
 	else
 	{

@@ -77,7 +77,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Boy.h" />
     <ClInclude Include="Dorm.h" />
+    <ClInclude Include="Girl.h" />
     <ClInclude Include="Initial.h" />
     <ClInclude Include="Init_value.h" />
     <ClInclude Include="love.h" />
@@ -88,7 +90,6 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="split.cpp" />
-    <ClCompile Include="Student.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
