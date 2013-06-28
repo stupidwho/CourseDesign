@@ -60,7 +60,7 @@ FLOOR_NUM& Dorm::operator[](int i)
 
 bool Dorm::exists(int fl, int rm)
 {
-	if (floors.size() < fl+1 || floors[fl].size() < rm+1)
+	if (0 > fl || floors.size() < fl+1 || 0 > rm || floors[fl].size() < rm+1)
 		return false;
 	else
 		return true;
@@ -140,6 +140,8 @@ bool Dorm::quit(std::string n)
 
 bool Dorm::add(int fls)
 {
+	if (fls < 0)
+		return false;
 	for(int i=0; i<fls; i++)
 	{
 		FLOOR_NUM f;
@@ -157,7 +159,7 @@ bool Dorm::add(int fls)
 
 bool Dorm::add(int fl, int rms)
 {
-	if (floors.size() < fl+1)
+	if (!exists(fl,0) || rms < 0)
 		return false;
 	for(int i=0; i<rms; i++)
 	{
@@ -171,7 +173,7 @@ bool Dorm::add(int fl, int rms)
 
 bool Dorm::add(int fl, int rm, int beds)
 {
-	if (!exists(fl,rm))
+	if (!exists(fl,rm) || beds < 0)
 		return false;
 	floors[fl][rm].number += beds;
 	return true;

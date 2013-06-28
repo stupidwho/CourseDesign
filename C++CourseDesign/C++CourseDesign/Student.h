@@ -10,10 +10,10 @@ class Student
 {
 
 public:
-	virtual void eat(int){}
-	virtual void study(int){}
-	virtual void ownact(int){}
-
+	virtual bool eat(int){return true;}
+	virtual bool study(int){return true;}
+	virtual bool ownact(int){return true;}
+	virtual int person_value(){return 0;}
 	std::string	name;
 	bool sex;
 	int	floor_number;

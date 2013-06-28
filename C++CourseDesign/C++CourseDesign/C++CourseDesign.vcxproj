@@ -10,6 +10,22 @@
       <Platform>Win32</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Boy.h" />
+    <ClInclude Include="Dorm.h" />
+    <ClInclude Include="Girl.h" />
+    <ClInclude Include="Initial.h" />
+    <ClInclude Include="Init_value.h" />
+    <ClInclude Include="love.h" />
+    <ClInclude Include="query.h" />
+    <ClInclude Include="read.h" />
+    <ClInclude Include="split.h" />
+    <ClInclude Include="Student.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="split.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{EA71BC93-E49C-4FCC-9348-7B115FE365DA}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
@@ -76,21 +92,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClInclude Include="Boy.h" />
-    <ClInclude Include="Dorm.h" />
-    <ClInclude Include="Girl.h" />
-    <ClInclude Include="Initial.h" />
-    <ClInclude Include="Init_value.h" />
-    <ClInclude Include="love.h" />
-    <ClInclude Include="read.h" />
-    <ClInclude Include="split.h" />
-    <ClInclude Include="Student.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="split.cpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

@@ -49,13 +49,13 @@ void read_command(std::istream& is, Dorm& d)
 				sscanf(strs[9].c_str(),"%d",&tr);
 				ff--,fr--,tf--,tr--;
 				if (!d.move(n, ff, fr, tf, tr))
-					std::cout << "指令内容错误" << std::endl;
+					std::cout << "无效指令内容:" << str << std::endl;
 			}
 			break;
 		case CMD_QUIT: 
 			{
 				if (!d.quit(strs[0]))
-					std::cout << "指令内容错误" << std::endl;
+					std::cout << "无效指令内容:" << str << std::endl;
 			}
 			break;
 		case CMD_ENROL: 
@@ -67,7 +67,7 @@ void read_command(std::istream& is, Dorm& d)
 				sscanf(strs[5].c_str(),"%d",&rm);
 				fl--,rm--;
 				if (!d.enrol(strs[0], s, fl, rm))
-					std::cout << "指令内容错误" << std::endl;
+					std::cout << "无效指令内容:" << str << std::endl;
 			}
 			break;
 		case CMD_ADD_FLOORS: 
@@ -75,7 +75,7 @@ void read_command(std::istream& is, Dorm& d)
 				int fls;
 				sscanf(strs[1].c_str(),"%d",&fls);
 				if (!d.add(fls))
-					std::cout << "指令内容错误" << std::endl;
+					std::cout << "无效指令内容:" << str << std::endl;
 			}
 			break;
 		case CMD_ADD_ROOMS: 
@@ -85,7 +85,7 @@ void read_command(std::istream& is, Dorm& d)
 				sscanf(strs[4].c_str(),"%d",&fl);
 				fl--;
 				if (!d.add(fl, rms))
-					std::cout << "指令内容错误" << std::endl;
+					std::cout << "无效指令内容:" << str << std::endl;
 			}
 			break;
 		case CMD_ADD_BEDS: 
@@ -96,23 +96,17 @@ void read_command(std::istream& is, Dorm& d)
 				sscanf(strs[6].c_str(),"%d",&rm);
 				fl--,rm--;
 				if (!d.add(fl, rm, beds))
-					std::cout << "指令内容错误" << std::endl;
+					std::cout << "无效指令内容:" << str << std::endl;
 			}
 			break;
 		case CMD_COURT: 
 			{
-				if (court(d.students[strs[0]], d.students[strs[2]]))
-					std::cout << "追求成功" << std::endl;
-				else
-					std::cout << "追求失败" << std::endl;
+				court(d.students[strs[0]], d.students[strs[2]]);
 			}
 			break;
 		case CMD_BREAKUP: 
 			{
-				if (breakup(d.students[strs[0]], d.students[strs[1]]))
-					std::cout << "分手成功" << std::endl;
-				else
-					std::cout << "分手失败" << std::endl;
+				breakup(d.students[strs[0]], d.students[strs[1]]);
 			}
 			break;
 		case CMD_MULTI: 
@@ -125,35 +119,39 @@ void read_command(std::istream& is, Dorm& d)
 					{
 						int e;
 						sscanf(strs[i+1].c_str(), "%d", &e);
-						d.students[strs[0]]->eat(e);
+						if (!d.students[strs[0]]->eat(e))
+							std::cout << "无效指令内容:" << str << std::endl;
 					}
 					t = "STUDY";
 					if (strs[i] == t)
 					{
 						int e;
 						sscanf(strs[i+1].c_str(), "%d", &e);
-						d.students[strs[0]]->study(e);
+						if (!d.students[strs[0]]->study(e))
+							std::cout << "无效指令内容:" << str << std::endl;
 					}
 					t = "MAKEUP";
 					if (strs[i] == t)
 					{
 						int e;
 						sscanf(strs[i+1].c_str(), "%d", &e);
-						d.students[strs[0]]->ownact(e);
+						if (!d.students[strs[0]]->ownact(e))
+							std::cout << "无效指令内容:" << str << std::endl;
 					}
 					t = "EXERCISE";
 					if (strs[i] == t)
 					{
 						int e;
 						sscanf(strs[i+1].c_str(), "%d", &e);
-						d.students[strs[0]]->ownact(e);
+						if (!d.students[strs[0]]->ownact(e))
+							std::cout << "无效指令内容:" << str << std::endl;
 					}
 				}
 			}
 			break;
 		case WRONG_CMD: 
 			{
-				std::cout << "指令格式错误" << std::endl;
+				std::cout << "指令格式错误:" << str << std::endl;
 			}
 			break;
 		}

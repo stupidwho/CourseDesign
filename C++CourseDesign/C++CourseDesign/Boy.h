@@ -7,9 +7,10 @@ class Boy:public Student
 {
 public:
 	Boy(const std::string&, const bool&, const int&, const int&);
-	void eat(int);
-	void study(int);
-	void ownact(int);
+	bool eat(int);
+	bool study(int);
+	bool ownact(int);
+	int person_value();
 
 protected:
 	int health;
@@ -20,20 +21,34 @@ private:
 	int charm_add(int, int, int);
 };
 
-void Boy::eat(int e)
+bool Boy::eat(int e)
 {
+	if (e < 0)
+		return false;
 	cost_add(e);
 	charm_add(0, 0, weight_add(e, 0, 0));
+	return true;
 }
 
-void Boy::study(int s)
+bool Boy::study(int s)
 {
+	if (s < 0)
+		return false;
 	charm_add(s, 0, weight_add(0, s, 0));
+	return true;
 }
 
-void Boy::ownact(int e)
+bool Boy::ownact(int e)
 {
+	if (e < 0)
+		return false;
 	charm_add(0, health_add(e), weight_add(0, 0, e));
+	return true;
+}
+
+int Boy::person_value()
+{
+	return health;
 }
 
 Boy::Boy(const std::string& n, const bool& s, const int& fn, const int& rn)

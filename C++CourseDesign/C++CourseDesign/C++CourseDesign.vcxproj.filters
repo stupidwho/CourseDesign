@@ -15,16 +15,16 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Student.h">
+    <ClInclude Include="Boy.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Dorm.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Init_value.h">
+    <ClInclude Include="Girl.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="split.h">
+    <ClInclude Include="Init_value.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Initial.h">
@@ -36,10 +36,13 @@
     <ClInclude Include="read.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Boy.h">
+    <ClInclude Include="split.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Girl.h">
+    <ClInclude Include="Student.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="query.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
