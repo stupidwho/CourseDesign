@@ -1,6 +1,10 @@
 #ifndef INITIAL_FUNCTIONS
 #define INITIAL_FUNCTIONS
 
+/*
+*该文件作用为实现各种初始化的函数
+*/
+
 #include <string>
 #include <vector>
 #include <cstdlib>
@@ -11,6 +15,7 @@
 #include "Student.h"
 #include "Init_value.h"
 
+//  从输入流is读入文件的默认配置
 void initv(std::istream& is)
 {
 	std::string str;
@@ -64,6 +69,7 @@ void initv(std::istream& is)
 	}
 }
 
+//从输入流is读入宿舍初始化数据，保存在d中
 void inits(std::istream& is, Dorm &d)
 {
 	std::string str;
@@ -76,9 +82,10 @@ void inits(std::istream& is, Dorm &d)
 		strs = split(str);
 		sscanf(strs[2].c_str(),"%d",&fl);
 		sscanf(strs[4].c_str(),"%d",&ro);
-		fl--;
+		fl--;  // 输入时从1开始，因此减1使得号码从0开始
 		ro--;
-		bool sex = (strcmp(strs[1].c_str(), "Ů") == 0);
+		bool sex = (strcmp(strs[1].c_str(), "Ů") == 0);  // 判断性别
+		
 		d.enrol(strs[0], sex, fl, ro);
 	}
 }

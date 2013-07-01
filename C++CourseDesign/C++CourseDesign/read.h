@@ -1,6 +1,10 @@
 #ifndef READ_command
 #define READ_command
 
+/*
+*实现从文件读取指令，并且转换为int型指令，然后进行函数调用
+*/
+
 #include <iostream>
 #include <vector>
 #include <string>
@@ -23,8 +27,9 @@
 #define CMD_EXERCISE 13
 #define WRONG_CMD -1
 
-int check_command(std::string);
+int check_command(std::string);  //将string型指令转化为int型
 
+// 从输入流is读取活动指令并且d进行实现
 void read_command(std::istream& is, Dorm& d)
 {
 	std::string str,n;
@@ -48,6 +53,7 @@ void read_command(std::istream& is, Dorm& d)
 				int tr;
 				sscanf(strs[9].c_str(),"%d",&tr);
 				ff--,fr--,tf--,tr--;
+
 				if (!d.move(n, ff, fr, tf, tr))
 					std::cout << "无效指令内容:" << str << std::endl;
 			}
@@ -66,6 +72,7 @@ void read_command(std::istream& is, Dorm& d)
 				sscanf(strs[3].c_str(),"%d",&fl);
 				sscanf(strs[5].c_str(),"%d",&rm);
 				fl--,rm--;
+
 				if (!d.enrol(strs[0], s, fl, rm))
 					std::cout << "无效指令内容:" << str << std::endl;
 			}
@@ -74,6 +81,7 @@ void read_command(std::istream& is, Dorm& d)
 			{
 				int fls;
 				sscanf(strs[1].c_str(),"%d",&fls);
+
 				if (!d.add(fls))
 					std::cout << "无效指令内容:" << str << std::endl;
 			}
@@ -84,6 +92,7 @@ void read_command(std::istream& is, Dorm& d)
 				sscanf(strs[1].c_str(),"%d",&rms);
 				sscanf(strs[4].c_str(),"%d",&fl);
 				fl--;
+
 				if (!d.add(fl, rms))
 					std::cout << "无效指令内容:" << str << std::endl;
 			}
@@ -95,6 +104,7 @@ void read_command(std::istream& is, Dorm& d)
 				sscanf(strs[4].c_str(),"%d",&fl);
 				sscanf(strs[6].c_str(),"%d",&rm);
 				fl--,rm--;
+
 				if (!d.add(fl, rm, beds))
 					std::cout << "无效指令内容:" << str << std::endl;
 			}
@@ -122,6 +132,7 @@ void read_command(std::istream& is, Dorm& d)
 						if (!d.students[strs[0]]->eat(e))
 							std::cout << "无效指令内容:" << str << std::endl;
 					}
+
 					t = "STUDY";
 					if (strs[i] == t)
 					{
@@ -130,6 +141,7 @@ void read_command(std::istream& is, Dorm& d)
 						if (!d.students[strs[0]]->study(e))
 							std::cout << "无效指令内容:" << str << std::endl;
 					}
+
 					t = "MAKEUP";
 					if (strs[i] == t)
 					{
@@ -138,6 +150,7 @@ void read_command(std::istream& is, Dorm& d)
 						if (!d.students[strs[0]]->ownact(e))
 							std::cout << "无效指令内容:" << str << std::endl;
 					}
+
 					t = "EXERCISE";
 					if (strs[i] == t)
 					{
@@ -158,11 +171,13 @@ void read_command(std::istream& is, Dorm& d)
 	}
 }
 
+// 判断str指令是否错误并且返回对应int型指令值
 int check_command(std::string str)
 {
 	std::string t;
 	std::vector<std::string> strs;
 	strs = split(str);
+	// 有ADD表示是增加楼层、房间或者床位
 	t = "ADD";
 	if (strs[0] == t)
 	{
@@ -192,6 +207,8 @@ int check_command(std::string str)
 		t = "BREAK";
 		if (strs[2] == t)
 			return CMD_BREAKUP;
+
+		// 下面的活动可在同一行出现多次，因此需要用不同的方法解析
 		t = "EAT";
 		if (strs[1] == t)
 			return CMD_MULTI;

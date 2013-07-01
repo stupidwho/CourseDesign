@@ -1,6 +1,9 @@
 #ifndef INITIAL_VALUE
 #define INITIAL_VALUE
 #include <fstream>
+/*
+*用命名空间定义全局变量，作为默认值
+*/
 namespace Init_value
 {
 	int FLOOR;
