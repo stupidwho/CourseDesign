@@ -33,6 +33,7 @@ public:
 	std::map<std::string,Student*> students;  
 
 	Dorm();  //  构造函数
+	~Dorm();
 	FLOOR_NUM& operator[](int);  //  通过楼层号实现返回该楼层vector
 	bool exists(int, int);  //  判断该楼层、房间是否存在
 	bool enrol(std::string, bool, int, int);  //  实现入学
@@ -58,6 +59,16 @@ Dorm::Dorm()
 		}
 		floors.push_back(f);
 	}
+}
+
+Dorm::~Dorm()
+{
+	std::map<std::string,Student*>::iterator i;
+	for(i = students.begin(); i!=students.end(); i++)
+	{
+		delete i->second;
+	}
+	floors.clear();
 }
 
 //返回第i层楼
